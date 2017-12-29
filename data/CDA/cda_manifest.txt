@@ -1,0 +1,551 @@
+PDS_VERSION_ID                  = PDS3                                        
+                                                                              
+RECORD_TYPE                     = FIXED_LENGTH                                
+RECORD_BYTES                    = 256                                         
+FILE_RECORDS                    = 57029                                       
+                                                                              
+^TABLE                          = "CDAEVENTS.TAB"                             
+                                                                              
+DATA_SET_NAME                   = "CASSINI CDA DATA V1.0"                     
+DATA_SET_ID                     = "CO-D-CDA-3/4/5-DUST-V1.0"                  
+PRODUCT_ID                      = "CDA_DA_IMPACTS"                            
+PRODUCT_NAME                    = "CASSINI CDA DUST ANALYSER EVENTS TABLE"    
+SPACECRAFT_NAME                 = "CASSINI ORBITER"                           
+INSTRUMENT_NAME                 = "COSMIC DUST ANALYSER"                      
+TARGET_NAME                     = "DUST"                                      
+START_TIME                      = "2005-001T00:00:00"                         
+STOP_TIME                       = "2005-090T23:59:59"                         
+PRODUCT_CREATION_TIME           = "2005-349T01:23:39"                         
+RECORD_FORMAT                   =                                             
+"(I10,1X,A17,1X,F14.6,1X,E8.1,1X,I1,1X,E8.1,1X,I1,1X,E8.1,1X,I1,1X,E8.1,      
+1X,I1,3(1X,E8.1),1X,I1,2(1X,F7.2),1X,F6.4,2(1X,F7.2),                         
+1X,F8.2,3(1X,F6.2),2(1X,F7.2),1X,I2,1X,I3,1X,F5.1,1X,F4.1,1X,E8.1,            
+1X,F4.1,2(1X,E8.1),1X,I1)"                                                    
+                                                                              
+OBJECT                          = TABLE                                       
+ INTERCHANGE_FORMAT             = ASCII                                       
+ ROWS                           = 57029                                       
+ COLUMNS                        = 35                                          
+ ROW_BYTES                      = 256                                         
+ DESCRIPTION                    =                                             
+"Detector responses and derived quantities from the Cassini dust detector     
+as well as spacecraft geometry information for each event wich triggered      
+the instrument. An event class flag is provided to distinguish between 4      
+differents types of signals: test pulses, noise, weak and strong              
+impacts. However, this flag value may be poorly reliable. Only a              
+carefully analysis of the individual charge signals combined with the         
+CDA documentation (see SRAMAETAL2004B) can confirm the event class. For       
+each event, and for each of the QP, QT, QI, QC channels, a flag is set        
+to 1 if a charge signal was  transmitted to Earth. The charge signal can      
+then be found in the appropriate directory."                                  
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 1                                           
+  NAME                          = "EVENT_ID"                                  
+  DESCRIPTION                   =                                             
+"An identifier number associated with an event."                              
+  DATA_TYPE                     = "ASCII_INTEGER"                             
+  START_BYTE                    = 1                                           
+  BYTES                         = 10                                          
+  MISSING_CONSTANT              = -999999999                                  
+  FORMAT                        = "I10"                                       
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 2                                           
+  NAME                          = "EVENT_TIME"                                
+  DESCRIPTION                   =                                             
+"The UTC time of an event given in year, day of year, hours, minutes, and     
+seconds in the general form:yyyy-dddThh:mm:ss. Uncertainty is smaller         
+than 1 second."                                                               
+  DATA_TYPE                     = "TIME"                                      
+  START_BYTE                    = 12                                          
+  BYTES                         = 17                                          
+  MISSING_CONSTANT              = "9999-999T99:99:99"                         
+  FORMAT                        = "A17"                                       
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 3                                           
+  NAME                          = "EVENT_JULIAN_DATE"                         
+  UNIT                          = "DAY"                                       
+  DESCRIPTION                   =                                             
+"The full Julian date of an  event. Uncertainty is smaller than 1 second."    
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 30                                          
+  BYTES                         = 14                                          
+  MISSING_CONSTANT              = -999999.999999                              
+  FORMAT                        = "F14.6"                                     
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 4                                           
+  NAME                          = "QP_AMPLITUDE"                              
+  UNIT                          = "COULOMBS"                                  
+  DESCRIPTION                   =                                             
+"Amplitude of the entrance grid channel signal. In case of a dust impact      
+event, particle charge as measured by the signal maximum."                    
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 45                                          
+  BYTES                         = 8                                           
+  MISSING_CONSTANT              = -9.9E-99                                    
+  FORMAT                        = "E8.1"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 5                                           
+  NAME                          = "QP_SIGNAL_FLAG"                            
+  DESCRIPTION                   =                                             
+"This flag is set to 1 if a charge signal is provided for this event in       
+the QP_SIGNAL directory."                                                     
+  DATA_TYPE                     = "ASCII_INTEGER"                             
+  START_BYTE                    = 54                                          
+  BYTES                         = 1                                           
+  MISSING_CONSTANT              = 9                                           
+  FORMAT                        = "I1"                                        
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 6                                           
+  NAME                          = "QI_AMPLITUDE"                              
+  UNIT                          = "COULOMBS"                                  
+  DESCRIPTION                   =                                             
+"Amplitude of the signal monitored by the integrating amplifier connected     
+to the ion grid. In case of a dust impact event, fraction of the plasma       
+ion charge yield generated by the impact."                                    
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 56                                          
+  BYTES                         = 8                                           
+  MISSING_CONSTANT              = -9.9E-99                                    
+  FORMAT                        = "E8.1"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 7                                           
+  NAME                          = "QI_SIGNAL_FLAG"                            
+  DESCRIPTION                   =                                             
+"This flag is set to 1 if a charge signal is provided for this event in       
+the QI_SIGNAL directory."                                                     
+  DATA_TYPE                     = "ASCII_INTEGER"                             
+  START_BYTE                    = 65                                          
+  BYTES                         = 1                                           
+  MISSING_CONSTANT              = 9                                           
+  FORMAT                        = "I1"                                        
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 8                                           
+  NAME                          = "QT_AMPLITUDE"                              
+  UNIT                          = "COULOMBS"                                  
+  DESCRIPTION                   =                                             
+"Amplitude of the signal monitored by the integrating amplifier connected     
+to the impact ionization target (IID). In case of a dust impact event,        
+fraction of the plasma electron charge yield generated by the particle        
+impact."                                                                      
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 67                                          
+  BYTES                         = 8                                           
+  MISSING_CONSTANT              = -9.9E-99                                    
+  FORMAT                        = "E8.1"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 9                                           
+  NAME                          = "QT_SIGNAL_FLAG"                            
+  DESCRIPTION                   =                                             
+"This flag is set to 1 if a charge signal is provided for this event in       
+the QT_SIGNAL directory."                                                     
+  DATA_TYPE                     = "ASCII_INTEGER"                             
+  START_BYTE                    = 76                                          
+  BYTES                         = 1                                           
+  MISSING_CONSTANT              = 9                                           
+  FORMAT                        = "I1"                                        
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 10                                          
+  NAME                          = "QC_AMPLITUDE"                              
+  UNIT                          = "COULOMBS"                                  
+  DESCRIPTION                   =                                             
+"Amplitude of the signal monitored by the integrating amplifier connected     
+to the chemical analyser target (CAT). In case of a dust impact event,        
+fraction of the plasma electron charge yield generated by the particle        
+impact."                                                                      
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 78                                          
+  BYTES                         = 8                                           
+  MISSING_CONSTANT              = -9.9E-99                                    
+  FORMAT                        = "E8.1"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 11                                          
+  NAME                          = "QCSIGNAL_FLAG"                             
+  DESCRIPTION                   =                                             
+"This flag is set to 1 if a charge signal is provided for this event in       
+the QC_SIGNAL directory."                                                     
+  DATA_TYPE                     = "ASCII_INTEGER"                             
+  START_BYTE                    = 87                                          
+  BYTES                         = 1                                           
+  MISSING_CONSTANT              = 9                                           
+  FORMAT                        = "I1"                                        
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 12                                          
+  NAME                          = "QI_RISE_TIME"                              
+  UNIT                          = "SECONDS"                                   
+  DESCRIPTION                   =                                             
+"The signal from the ion grid is reconstructed and converted to Coulomb.      
+The rise time is that time elapsed between 10% and 90% of the signal          
+maximum. The error on the rise time is set by the channel sampling rate       
+and is of 166.6E-9 s. In case of a noise event, or if the signal              
+amplitude is zero, the rise time is set to its missing value."                
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 89                                          
+  BYTES                         = 8                                           
+  MISSING_CONSTANT              = -9.9E-99                                    
+  FORMAT                        = "E8.1"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 13                                          
+  NAME                          = "QT_RISE_TIME"                              
+  UNIT                          = "SECONDS"                                   
+  DESCRIPTION                   =                                             
+"The signal from the impact ionization detector is reconstructed and          
+converted to Coulomb. The rise time is that time elapsed between 10% and      
+90% of the signal maximum. The error on the rise time is set by the           
+channel sampling rateand is of 333.3E-9 s. In case of a noise event, or       
+if the signal amplitude is zero, the rise time is set to its missing          
+value."                                                                       
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 98                                          
+  BYTES                         = 8                                           
+  MISSING_CONSTANT              = -9.9E-99                                    
+  FORMAT                        = "E8.1"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 14                                          
+  NAME                          = "QC_RISE_TIME"                              
+  UNIT                          = "SECONDS"                                   
+  DESCRIPTION                   =                                             
+"The signal from the chemical analyser target is reconstructed and            
+converted to Coulomb. The rise time is that time elapsed between 10% and      
+90% of the signal maximum. The error on the rise time is set by the           
+channel sampling rate and is of 166.6E-9 s. In case of a noise event, or      
+if the signal amplitude is zero, the rise time is set to its missing          
+value."                                                                       
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 107                                         
+  BYTES                         = 8                                           
+  MISSING_CONSTANT              = -9.9E-99                                    
+  FORMAT                        = "E8.1"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 15                                          
+  NAME                          = "TARGET_FLAG"                               
+  DESCRIPTION                   =                                             
+"In case of an impact event, the target flag (TF) indicates that portion      
+of the target impacted. TF|Portion: 0|Unknown, 1|Chemical Analyser            
+Target, (inner target), 2|Impact Ionization Detector, (outer target),         
+3|QP-Grid, 4|CAT-Grid, 5|Wall impacts. Will be supplied in later              
+delivery, when a reliable determination method will be available."            
+  DATA_TYPE                     = "ASCII_INTEGER"                             
+  START_BYTE                    = 116                                         
+  BYTES                         = 1                                           
+  MISSING_CONSTANT              = 9                                           
+  FORMAT                        = "I1"                                        
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 16                                          
+  NAME                          = "SPACECRAFT_RIGHT_ASCENSION"                
+  UNIT                          = "DEGREES"                                   
+  DESCRIPTION                   =                                             
+"The heliocentric right ascension (J2000) of the spacecraft."                 
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 118                                         
+  BYTES                         = 7                                           
+  MISSING_CONSTANT              = -999.99                                     
+  FORMAT                        = "F7.2"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 17                                          
+  NAME                          = "SPACECRAFT_DECLINATION"                    
+  UNIT                          = "DEGREES"                                   
+  DESCRIPTION                   =                                             
+"The heliocentric declination (J2000) of the spacecraft."                     
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 126                                         
+  BYTES                         = 7                                           
+  MISSING_CONSTANT              = -999.99                                     
+  FORMAT                        = "F7.2"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 18                                          
+  NAME                          = "SPACECRAFT_SUN_DISTANCE"                   
+  UNIT                          = "AU"                                        
+  DESCRIPTION                   =                                             
+"The distance from the spacecraft to the Sun."                                
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 134                                         
+  BYTES                         = 6                                           
+  MISSING_CONSTANT              = 9.9999                                      
+  FORMAT                        = "F6.4"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 19                                          
+  NAME                          = "SPACECRAFT_SATURN_SYSTEM_III_LONGITUDE"    
+  UNIT                          = "DEGREES"                                   
+  DESCRIPTION                   =                                             
+"The sub-Saturn longitude of the spacecraft in the System III                 
+coordinates: +z is the pole axis of Saturn, xy the ring plane. +x is the      
+projection of the J2000 vernal equinox direction onto the ring plane"         
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 141                                         
+  BYTES                         = 7                                           
+  MISSING_CONSTANT              = -999.99                                     
+  FORMAT                        = "F7.2"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 20                                          
+  NAME                          = "SPACECRAFT_SATURN_SYSTEM_III_LATITUDE"     
+  UNIT                          = "DEGREES"                                   
+  DESCRIPTION                   =                                             
+"The sub-Saturn latitude of the spacecraft in the System III coordinates:     
++z is the pole axis of Saturn, xy the ring plane. +x is the projection        
+of the J2000 vernal equinox direction onto the ring plane"                    
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 149                                         
+  BYTES                         = 7                                           
+  MISSING_CONSTANT              = -999.99                                     
+  FORMAT                        = "F7.2"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 21                                          
+  NAME                          = "SPACECRAFT_SATURN_DISTANCE"                
+  UNIT                          = "SAT_RA"                                    
+  DESCRIPTION                   =                                             
+"The distance from the spacecraft to Saturn in Saturnian radii."              
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 157                                         
+  BYTES                         = 8                                           
+  MISSING_CONSTANT              = -9999.99                                    
+  FORMAT                        = "F8.2"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 22                                          
+  NAME                          = "SPACECRAFT_X_VELOCITY"                     
+  UNIT                          = "KM/S"                                      
+  DESCRIPTION                   =                                             
+"The J2000 heliocentric equatorial X component of the Cassini velocity        
+vector."                                                                      
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 166                                         
+  BYTES                         = 6                                           
+  MISSING_CONSTANT              = -99.99                                      
+  FORMAT                        = "F6.2"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 23                                          
+  NAME                          = "SPACECRAFT_Y_VELOCITY"                     
+  UNIT                          = "KM/S"                                      
+  DESCRIPTION                   =                                             
+"The J2000 heliocentric equatorial Y component of the Cassini velocity        
+vector."                                                                      
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 173                                         
+  BYTES                         = 6                                           
+  MISSING_CONSTANT              = -99.99                                      
+  FORMAT                        = "F6.2"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 24                                          
+  NAME                          = "SPACECRAFT_Z_VELOCITY"                     
+  UNIT                          = "KM/S"                                      
+  DESCRIPTION                   =                                             
+"The J2000 heliocentric equatorial Z component of the Cassini velocity        
+vector."                                                                      
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 180                                         
+  BYTES                         = 6                                           
+  MISSING_CONSTANT              = -99.99                                      
+  FORMAT                        = "F6.2"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 25                                          
+  NAME                          = "DETECTOR_RIGHT_ASCENSION"                  
+  UNIT                          = "DEGREES"                                   
+  DESCRIPTION                   =                                             
+"The spacecraft-centered right ascension (J2000) of the sensor axis."         
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 187                                         
+  BYTES                         = 7                                           
+  MISSING_CONSTANT              = -999.99                                     
+  FORMAT                        = "F7.2"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 26                                          
+  NAME                          = "DETECTOR_DECLINATION"                      
+  UNIT                          = "DEGREES"                                   
+  DESCRIPTION                   =                                             
+"The spacecraft-centered declination (J2000) of the sensor axis."             
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 195                                         
+  BYTES                         = 7                                           
+  MISSING_CONSTANT              = -999.99                                     
+  FORMAT                        = "F7.2"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 27                                          
+  NAME                          = "COUNTER_NUMBER"                            
+  DESCRIPTION                   =                                             
+"Event counter assigned by the on-board event evaluation algorithm with a     
+value between 0 and 19. The event counter value is a rough measure for        
+the properties of the registered event."                                      
+  DATA_TYPE                     = "ASCII_INTEGER"                             
+  START_BYTE                    = 203                                         
+  BYTES                         = 2                                           
+  MISSING_CONSTANT              = -9                                          
+  FORMAT                        = "I2"                                        
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 28                                          
+  NAME                          = "EVENT_QUALITY"                             
+  DESCRIPTION                   =                                             
+"Event quality assigned by the on-board evaluation algorithm. The event       
+class takes values between 0 and 4 and is a rough measure for the             
+quality of the event 0 - noise 1 - test pulse, 2 - small impact, 3 -          
+strong impact, 4 - impacts with TOF mass spectrum). Will be supplied in       
+later delivery, when a reliable determination method will be available."      
+  DATA_TYPE                     = "ASCII_INTEGER"                             
+  START_BYTE                    = 206                                         
+  BYTES                         = 3                                           
+  MISSING_CONSTANT              = -9                                          
+  FORMAT                        = "I3"                                        
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 29                                          
+  NAME                          = "PARTICLE_SPEED"                            
+  UNIT                          = "KILOMETER PER SECOND"                      
+  DESCRIPTION                   =                                             
+"The impact speed of the particle relative to the spacecraft. When no         
+speed can be determined, or in case of a noise event, the value is set        
+to its missing value. Will be supplied in later delivery, when a              
+reliable determination method will be available."                             
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 210                                         
+  BYTES                         = 5                                           
+  MISSING_CONSTANT              = -99.9                                       
+  FORMAT                        = "F5.1"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 30                                          
+  NAME                          = "PARTICLE_SPEED_FACTOR"                     
+  DESCRIPTION                   =                                             
+"An upper and lower estimate of impactor speed relative to the spacecraft     
+is obtained by multiplying and dividing, respectively, the particle           
+speed by this factor. When no speed (hence error factor) can be               
+determined, the value of this factor is set to its missing value. Will        
+be supplied in later delivery, when a reliable determination method will      
+be available."                                                                
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 216                                         
+  BYTES                         = 4                                           
+  MISSING_CONSTANT              = -9.9                                        
+  FORMAT                        = "F4.1"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 31                                          
+  NAME                          = "PARTICLE_MASS"                             
+  UNIT                          = "KG"                                        
+  DESCRIPTION                   =                                             
+"The particle mass. When the particle speed is not determined, the mass       
+is not determined and is set to its missing value. Will be supplied in        
+later delivery, when a reliable determination method will be available."      
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 221                                         
+  BYTES                         = 8                                           
+  MISSING_CONSTANT              = -9.9E-99                                    
+  FORMAT                        = "E8.1"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 32                                          
+  NAME                          = "PARTICLE_MASS_FACTOR"                      
+  DESCRIPTION                   =                                             
+"An upper and lower estimate of the impactor mass is obtained by              
+multiplying and dividing, respectively, the particle mass by this             
+factor. When the speed is not determined, neither is the mass, and this       
+factor is set to its missing value. Will be supplied in later delivery,       
+when a reliable determination method will be available."                      
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 230                                         
+  BYTES                         = 4                                           
+  MISSING_CONSTANT              = -9.9                                        
+  FORMAT                        = "F4.1"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 33                                          
+  NAME                          = "PARTICLE_CHARGE"                           
+  UNIT                          = "COULOMB"                                   
+  DESCRIPTION                   =                                             
+"The charge of a particle derived from the entrance grid signal. When no      
+charge can be determined, the value is set to its missing value. Will be      
+supplied in later delivery, when a reliable determination method will be      
+available."                                                                   
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 235                                         
+  BYTES                         = 8                                           
+  MISSING_CONSTANT              = -9.9E-99                                    
+  FORMAT                        = "E8.1"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 34                                          
+  NAME                          = "PARTICLE_CHARGE_ERROR"                     
+  DESCRIPTION                   =                                             
+"The error factor associated with the particle charge. An upper and lower     
+particle charge by this factor. Will be supplied in later delivery, when      
+a reliable determination method will be available."                           
+  DATA_TYPE                     = "ASCII_REAL"                                
+  START_BYTE                    = 244                                         
+  BYTES                         = 8                                           
+  MISSING_CONSTANT              = -9.9E-99                                    
+  FORMAT                        = "E8.1"                                      
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+ OBJECT                         = COLUMN                                      
+  COLUMN_NUMBER                 = 35                                          
+  NAME                          = "SPECTRUM_FLAG"                             
+  DESCRIPTION                   =                                             
+"A flag indicating if there exists a corresponding mass spectrum for the      
+particle (1) or not (0)."                                                     
+  DATA_TYPE                     = "ASCII_INTEGER"                             
+  START_BYTE                    = 253                                         
+  BYTES                         = 1                                           
+  MISSING_CONSTANT              = 9                                           
+  FORMAT                        = "I1"                                        
+ END_OBJECT                     = COLUMN                                      
+                                                                              
+END_OBJECT                      = TABLE                                       
+END                                                                           
